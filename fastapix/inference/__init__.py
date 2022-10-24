@@ -1,0 +1,1 @@
+from fastapix.inference.main import infer_project_structure as infer_project_structure

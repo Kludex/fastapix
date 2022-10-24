@@ -1,10 +1,19 @@
 import platform
+from pathlib import Path
 
 import typer
+from appdirs import user_cache_dir
+from rich.console import Console
+
+from fastapix.commands.environment import app as env_app
+from fastapix.context import Context, ContextObject
+from fastapix.inference import infer_project_structure
 
 __version__ = "0.1.0"
 
+
 app = typer.Typer(name="FastAPI X", help="Manage your FastAPI project.")
+app.add_typer(env_app)
 
 
 def version_callback(value: bool) -> None:
@@ -22,6 +31,7 @@ def version_callback(value: bool) -> None:
 
 @app.callback()  # type: ignore[misc]
 def main(
+    ctx: Context,
     version: bool = typer.Option(
         None,
         "--version",
@@ -30,4 +40,13 @@ def main(
         help="Show version and exit.",
     ),
 ) -> None:
-    ...  # pragma: no cover
+    console = Console()
+
+    cache_dir = Path(user_cache_dir("fastapix"))
+    cache_dir.mkdir(exist_ok=True)
+
+    # TODO: Create an entry per project. Each entry that represents a file should have
+    # a hash.
+
+    project_structure = infer_project_structure(console)
+    ctx.obj = ContextObject(console=console, structure=project_structure)
