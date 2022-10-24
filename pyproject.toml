@@ -4,7 +4,6 @@ build-backend = 'hatchling.build'
 
 [project]
 name = "fastapix"
-version = "0.0.0"
 description = "FastAPI X is a powerful CLI tool to help you! :rocket:"
 readme = "README.md"
 authors = [
@@ -26,14 +25,24 @@ classifiers = [
 ]
 license = "MIT"
 requires-python = ">=3.7"
-dependencies = []
+dependencies = [
+    "typer>=0.6.1",
+    "rich>=12.6.0"
+]
 optional-dependencies = {}
+dynamic = ["version"]
+
+[tool.hatch.version]
+path = "fastapix/main.py"
 
 [project.urls]
 Homepage = "https://github.com/Kludex/fastapix"
 Source = "https://github.com/Kludex/fastapix"
 Twitter = "https://twitter.com/marcelotryle"
 Funding = 'https://github.com/sponsors/Kludex'
+
+[project.scripts]
+fastapix = "fastapix.main:app"
 
 [tool.mypy]
 strict = true
