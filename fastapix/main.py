@@ -11,7 +11,7 @@ from fastapix.commands.routes import app as routes_app
 from fastapix.context import Context, ContextObject
 from fastapix.inference import infer_project_structure
 
-__version__ = "0.0.0"
+__version__ = "0.1.0"
 
 
 app = typer.Typer(name="FastAPI X", help="Manage your FastAPI project.")
