@@ -19,15 +19,14 @@ jobs:
       - name: Bump to version ${{ github.event.inputs.version }}
         run: |
           version='${{ github.event.inputs.version }}'
-          sed -i -E "s/^version = \"(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)\"/version = \"$version\"/" pyproject.toml
+          sed -i -E "s/^__version__ = \"(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)\"/__version__ = \"$version\"/" fastapix/main.py
           echo "version=$version" >> $GITHUB_ENV
-          cat pyproject.toml
 
       - name: Commit version bump
         run: |
           git config --global user.name 'Github Actions'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add pyproject.toml
+          git add fastapix/main.py
           git commit -m "Release $version"
           git push origin main
 
