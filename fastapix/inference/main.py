@@ -30,14 +30,4 @@ def infer_project_structure(console: Console) -> ProjectStructure:
                 app = Component(filename=filename, content=content)
         filename = next(filenames, None)
 
-    # TODO: PR welcome to add a test for this case.
-    if settings is None:  # pragma: no cover
-        console.print("[bold red]Could not infer the settings file.[/bold red]")
-        raise RuntimeError()
-
-    # TODO: PR welcome to add a test for this case.
-    if app is None:  # pragma: no cover
-        console.print("[bold red]Could not infer the application file.[/bold red]")
-        raise RuntimeError()
-
     return ProjectStructure(settings=settings, app=app)

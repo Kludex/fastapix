@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Union
 
 from rich.console import Console
 from typer import Context as _Context
@@ -12,8 +13,8 @@ class Component:
 
 @dataclass
 class ProjectStructure:
-    settings: Component
-    app: Component
+    settings: Union[Component, None]
+    app: Union[Component, None]
 
 
 @dataclass

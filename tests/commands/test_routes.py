@@ -16,13 +16,6 @@ def test_routes_command(tmp_path: Path) -> None:
         @app.get("/")
         def index():
             return {"message": "Hello World!"}
-
-        # NOTE: Currently, the structure is only valid if it contains settings and app.
-        from pydantic import BaseSettings
-
-        class Settings(BaseSettings):
-            foo: str = "bar"
-            bar: int
         """
     )
     runner = CliRunner()

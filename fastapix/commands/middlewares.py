@@ -8,11 +8,11 @@ from rich.table import Table
 from fastapix.context import Context
 from fastapix.loader import import_from_filename
 
-app = typer.Typer(name="routes", help="List FastAPI routes.")
+app = typer.Typer(name="middlewares", help="List FastAPI middlewares.")
 
 
 @app.callback(invoke_without_command=True)  # type: ignore[misc]
-def routes(ctx: Context) -> None:
+def middlewares(ctx: Context) -> None:
     if ctx.obj.structure.app is None:  # pragma: no cover
         ctx.obj.console.print("No app found.")
         raise typer.Exit(2)
@@ -28,17 +28,20 @@ def routes(ctx: Context) -> None:
     if app is None:  # pragma: no cover
         raise RuntimeError("Could not find FastAPI instance.")
 
-    headers = ("name", "path", "methods")
-    routes: list[tuple[str, str, str]] = []
-    for route in app.routes:
-        name = str(getattr(route, "name"))
-        path = str(getattr(route, "path"))
-        methods = sorted(getattr(route, "methods", None) or {})
-        routes.append((name, path, str(methods)))
-    routes.sort(key=lambda x: x[1])
+    headers = ("middleware", "parameter", "value")
+    middlewares = [
+        (
+            middleware.cls.__name__,
+            "\n".join(str(key) for key in middleware.options.keys()),
+            "\n".join(str(value) for value in middleware.options.values()),
+        )
+        for middleware in app.user_middleware
+    ]
+    for middleware in app.user_middleware:
+        print(middleware.cls, middleware.options)
     table = Table(show_header=True, header_style="bold magenta")
     for column in headers:
         table.add_column(column)
-    for route in routes:
-        table.add_row(*route)
+    for middleware in middlewares:
+        table.add_row(*middleware)
     ctx.obj.console.print(table)
