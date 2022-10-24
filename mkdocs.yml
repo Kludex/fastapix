@@ -1,3 +1,30 @@
-site_name: My Docs
+site_name: FastAPI X
 theme:
   name: material
+  palette:
+    primary: "blue"
+    accent: "orange"
+  font:
+    text: "Ubuntu"
+repo_name: Kludex/fastapix
+repo_url: https://github.com/Kludex/fastapix
+
+nav:
+  - FastAPI X: index.md
+  - Commands: commands.md
+  - Generators:
+      - Generators: generators/index.md
+      - Project: generators/project.md
+      - Component: generators/component.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - admonition
+  - codehilite
+  - extra
+  - tables
+  - smarty
+  - pymdownx.tabbed

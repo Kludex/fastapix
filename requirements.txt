@@ -17,3 +17,6 @@ fastapi
 
 # Build
 hatch
+
+# Docs
+mkdocs-material

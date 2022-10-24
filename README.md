@@ -1,5 +1,5 @@
 <h1 align="center">
-    <strong>fastapix</strong>
+    <strong>FastAPI X</strong>
 </h1>
 <p align="center">
     <a href="https://github.com/Kludex/fastapix" target="_blank">
@@ -22,7 +22,7 @@
 The most important feature are the project and component generators.
 
 - [X] Show environment variables the project is reading - `fastapix env`.
-- [ ] Show application routes. - `fastapix routes`.
+- [X] Show application routes. - `fastapix routes`.
 - [ ] Show application middlewares. - `fastapix middlewares`.
 - [ ] Project generator - `fastapix new app`.
     - [ ] Generate a new project.
