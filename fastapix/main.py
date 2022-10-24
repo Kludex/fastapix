@@ -6,6 +6,7 @@ from appdirs import user_cache_dir
 from rich.console import Console
 
 from fastapix.commands.environment import app as env_app
+from fastapix.commands.middlewares import app as middlewares_app
 from fastapix.commands.routes import app as routes_app
 from fastapix.context import Context, ContextObject
 from fastapix.inference import infer_project_structure
@@ -16,6 +17,7 @@ __version__ = "0.1.0"
 app = typer.Typer(name="FastAPI X", help="Manage your FastAPI project.")
 app.add_typer(env_app)
 app.add_typer(routes_app)
+app.add_typer(middlewares_app)
 
 
 def version_callback(value: bool) -> None:

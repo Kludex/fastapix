@@ -28,6 +28,10 @@ def main(
     output: Path = typer.Option(Path("/dev/stdout"), help="Output filename."),
 ) -> None:
     """Print out the environment variables used."""
+    if ctx.obj.structure.settings is None:  # pragma: no cover
+        ctx.obj.console.print("No settings found.")
+        raise typer.Exit(2)
+
     module = import_from_filename(ctx.obj.structure.settings.filename)
 
     for name, value in getmembers(module):

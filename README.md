@@ -23,7 +23,7 @@ The most important feature are the project and component generators.
 
 - [X] Show environment variables the project is reading - `fastapix env`.
 - [X] Show application routes. - `fastapix routes`.
-- [ ] Show application middlewares. - `fastapix middlewares`.
+- [X] Show application middlewares. - `fastapix middlewares`.
 - [ ] Project generator - `fastapix new app`.
     - [ ] Generate a new project.
     - [ ] Generate Dockerfile.
