@@ -1,10 +1,8 @@
 """
 Command that prints out the environment variables that are used.
 """
-import importlib.util
 import io
 import json
-import sys
 from inspect import getmembers, isclass
 from pathlib import Path
 from typing import Type
@@ -17,30 +15,20 @@ from pytablewriter.style import Style
 from pytablewriter.writer import MarkdownTableWriter
 
 from fastapix.context import Context
+from fastapix.loader import import_from_filename
 
-app = typer.Typer(
-    name="env",
-    help="Print out the environment variables used.",
-    invoke_without_command=True,
-)
+app = typer.Typer(name="env", help="Print out the environment variables used.")
 
 
 # TODO: Add template option.
 # TODO: Use rich if output is stdout.
-@app.callback()  # type: ignore[misc]
+@app.callback(invoke_without_command=True)  # type: ignore[misc]
 def main(
     ctx: Context,
     output: Path = typer.Option(Path("/dev/stdout"), help="Output filename."),
 ) -> None:
     """Print out the environment variables used."""
-    filename = ctx.obj.structure.settings.filename
-    spec = importlib.util.spec_from_file_location("module", filename)
-    if spec is None or spec.loader is None:
-        raise RuntimeError("Could not load settings file.")  # pragma: no cover
-
-    module = importlib.util.module_from_spec(spec)
-    sys.modules["module"] = module
-    spec.loader.exec_module(module)
+    module = import_from_filename(ctx.obj.structure.settings.filename)
 
     for name, value in getmembers(module):
         if isclass(value) and issubclass(value, BaseSettings) and value != BaseSettings:
