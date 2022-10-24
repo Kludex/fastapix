@@ -1,0 +1,14 @@
+-e .
+
+# Linter & Formatter
+isort
+flake8
+black
+mypy
+pyproject-flake8
+
+# Tests
+coverage[toml]
+pytest
+pytest-sugar
+dirty-equals
