@@ -13,7 +13,7 @@ coverage[toml]
 pytest
 pytest-sugar
 dirty-equals
-pydantic
+fastapi
 
 # Build
 hatch
