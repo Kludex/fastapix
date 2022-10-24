@@ -6,9 +6,7 @@ build-backend = 'hatchling.build'
 name = "fastapix"
 description = "FastAPI X is a powerful CLI tool to help you! :rocket:"
 readme = "README.md"
-authors = [
-    { name = "Marcelo Trylesinski", email = "marcelotryle@email.com" },
-]
+authors = [{ name = "Marcelo Trylesinski", email = "marcelotryle@email.com" }]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "License :: OSI Approved :: MIT License",
@@ -27,7 +25,10 @@ license = "MIT"
 requires-python = ">=3.7"
 dependencies = [
     "typer>=0.6.1",
-    "rich>=12.6.0"
+    "rich>=12.6.0",
+    "appdirs>=1.4.4",
+    "libcst>=0.4.7",
+    "pytablewriter>=0.64.2",
 ]
 optional-dependencies = {}
 dynamic = ["version"]
