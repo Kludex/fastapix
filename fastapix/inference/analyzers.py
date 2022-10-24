@@ -3,7 +3,7 @@ import re
 
 class Analyzer:
     def match(self, content: str) -> bool:
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
 
 
 class SettingsAnalyzer(Analyzer):

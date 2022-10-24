@@ -23,6 +23,7 @@ def infer_project_structure(console: Console) -> ProjectStructure:
                 settings = Component(filename=filename, content=content)
                 break
 
+    # TODO: PR welcome to add a test for this case.
     if settings is None:
         console.print("[bold red]Could not infer the settings file.[/bold red]")
         raise RuntimeError()
