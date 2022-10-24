@@ -24,9 +24,9 @@ def infer_project_structure(console: Console) -> ProjectStructure:
     while filename and (app is None or settings is None):
         with open(filename, "r") as f:
             content = f.read()
-            if settings_analyzer.match(content):
+            if settings_analyzer.match(content):  # pragma: no cover
                 settings = Component(filename=filename, content=content)
-            if app_analyzer.match(content):
+            if app_analyzer.match(content):  # pragma: no cover
                 app = Component(filename=filename, content=content)
         filename = next(filenames, None)
 
