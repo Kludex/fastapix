@@ -15,6 +15,25 @@
     <img src="https://img.shields.io/github/license/Kludex/fastapix">
 </p>
 
+:warning: **This project is still under development.**
+
+## Features
+
+The most important feature are the project and component generators.
+
+- [X] Show environment variables the project is reading - `fastapix env`.
+- [ ] Show application routes. - `fastapix routes`.
+- [ ] Show application middlewares. - `fastapix middlewares`.
+- [ ] Project generator - `fastapix new app`.
+    - [ ] Generate a new project.
+    - [ ] Generate Dockerfile.
+- [ ] Component generator - `fastapix new component`.
+    - [ ] Generate a new component based on the current project structure.
+- [ ] Plugin system. People will be able to create their own commands.
+- [ ] Embed Flake8-FastAPI - `fastapix lint`.
+- [ ] Embed formatter - `fastapix format`.
+- [ ] Show information about the project - `fastapix info`.
+
 ## Installation
 
 ```bash
