@@ -3,7 +3,7 @@ import pytest
 from fastapix.inference.analyzers import SettingsAnalyzer
 
 
-@pytest.mark.parametrize(
+@pytest.mark.parametrize(  # type: ignore[misc]
     "content, expected",
     [
         ("class Settings(BaseSettings):", True),

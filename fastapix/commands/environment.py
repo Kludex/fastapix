@@ -27,7 +27,7 @@ app = typer.Typer(
 
 # TODO: Add template option.
 # TODO: Use rich if output is stdout.
-@app.callback()
+@app.callback()  # type: ignore[misc]
 def main(
     ctx: Context,
     output: Path = typer.Option(Path("/dev/stdout"), help="Output filename."),
@@ -35,6 +35,9 @@ def main(
     """Print out the environment variables used."""
     filename = ctx.obj.structure.settings.filename
     spec = importlib.util.spec_from_file_location("module", filename)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("Could not load settings file.")
+
     module = importlib.util.module_from_spec(spec)
     sys.modules["module"] = module
     spec.loader.exec_module(module)
@@ -79,11 +82,9 @@ def show_environment(settings_class: Type[BaseSettings], output: Path) -> None:
 
 
 # TODO: Use CST instead of loading the module.
-class BaseSettingsVisitor(cst.CSTVisitor):  # pragma: no cover
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+class BaseSettingsVisitor(cst.CSTVisitor):  # type: ignore[misc]  # pragma: no cover
+    def __init__(self) -> None:
         self.inside_settings = False
-        self.settings = {}
 
     def visit_ClassDef(self, node: cst.ClassDef) -> None:
         for base in node.bases:

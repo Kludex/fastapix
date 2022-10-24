@@ -21,5 +21,5 @@ class ContextObject:
     structure: ProjectStructure
 
 
-class Context(_Context):
+class Context(_Context):  # type: ignore[misc]
     obj: ContextObject
