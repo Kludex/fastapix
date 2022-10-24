@@ -14,6 +14,11 @@ def test_env_command(tmp_path: Path) -> None:
         class Settings(BaseSettings):
             foo: str = "bar"
             bar: int
+
+        # NOTE: Currently, the structure is only valid if it contains settings and app.
+        from fastapi import FastAPI
+
+        app = FastAPI()
         """
     )
     runner = CliRunner()

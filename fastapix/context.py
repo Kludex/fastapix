@@ -13,6 +13,7 @@ class Component:
 @dataclass
 class ProjectStructure:
     settings: Component
+    app: Component
 
 
 @dataclass
