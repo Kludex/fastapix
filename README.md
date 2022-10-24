@@ -6,7 +6,9 @@
         <img src="https://img.shields.io/github/last-commit/Kludex/fastapix" alt="Latest Commit">
     </a>
         <img src="https://img.shields.io/github/workflow/status/Kludex/fastapix/CI">
-        <img src="https://img.shields.io/codecov/c/github/Kludex/fastapix">
+        <a href="https://github.com/Kludex/fastapix/actions?workflow=CI" target="_blank">
+            <img src="https://img.shields.io/badge/Coverage-100%25-success">
+        </a>
     <br />
     <a href="https://pypi.org/project/fastapix" target="_blank">
         <img src="https://img.shields.io/pypi/v/fastapix" alt="Package version">
