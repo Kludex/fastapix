@@ -30,4 +30,4 @@ def main(
         help="Show version and exit.",
     ),
 ) -> None:
-    ...
+    ...  # pragma: no cover

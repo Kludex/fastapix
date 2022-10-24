@@ -38,7 +38,7 @@ jobs:
 
 
       - name: Run tests
-        run: python -m coverage run -m pytest
+        run: python -m coverage run --branch --parallel-mode -m pytest
 
       - name: Upload coverage data
         uses: actions/upload-artifact@v3
