@@ -1,4 +1,4 @@
-_subdirectory: "templates/{{ template }}"
+_subdirectory: "templates/{{template}}"
 
 template:
   type: str
